@@ -2,7 +2,7 @@ import Dog from '../../../models/Dog';
 
 export default async(req, res) => {
 
-  
+
   const { method } = req;
   switch (method) {
     case 'POST': {
@@ -10,8 +10,8 @@ export default async(req, res) => {
         const dog = await Dog.create(req.body);
   
         res.status(201).json(dog);
-      } catch {
-        res.status(400).json('you suck');
+      } catch(err) {
+        res.status(400).json(err);
       } break;
     } 
     default: res.status(400).json('you still suck');
