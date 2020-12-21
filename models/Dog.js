@@ -19,4 +19,12 @@ export default class Dog {
 
     return new Dog(rows[0]);
   }
+
+  static async find() {
+    const { rows } = await pool.query(
+      'SELECT * FROM dogs'
+    );
+
+    return rows.map(row => new Dog(row));
+  }
 }
